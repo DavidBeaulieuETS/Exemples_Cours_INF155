@@ -3,6 +3,6 @@ project(Exemples_Cours_INF155 C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_subdirectory(Cours1/)
+add_subdirectory(Cours1)
 
 

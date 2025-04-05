@@ -1,4 +1,4 @@
 
 
 
-add_executable(a_principal.c)
+add_executable(Cours1 a_principal.c)
