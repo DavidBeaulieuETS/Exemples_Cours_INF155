@@ -1,3 +1,10 @@
+#Spécifique à l'utilisation de Google Drive
+*.ini
+
+#Spécifique pour CLion
+cmake-build-debug/
+.idea/
+
 # Prerequisites
 *.d
 
