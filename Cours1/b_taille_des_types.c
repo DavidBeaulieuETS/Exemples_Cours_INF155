@@ -6,14 +6,14 @@
 	Description: Programme permet d'afficher la taille des types de bases.
 
 	NOTE DE L'ENSEIGNANT : Les commentaires de ce module sont des explications, ils ne
-						   représentent pas vraiment ce qui est attendu de vous lors
+						   reprÃ©sentent pas vraiment ce qui est attendu de vous lors
 						   de la remise de vos travaux pratiques.
 
 *****************************************************************************************/
 
 
 /****************************************************************************************
-*                               COMMANDE DU PRÉPROCESSEUR                               *
+*                               COMMANDES DU PRÃ‰PROCESSEUR                               *
 ****************************************************************************************/
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdlib.h>		/* NDE : Librairie Standart */
@@ -23,11 +23,11 @@
 
 
 /****************************************************************************************
-*                               DÉFINTION DES CONSTANTES                                *
+*                               Dï¿½FINTION DES CONSTANTES                                *
 ****************************************************************************************/
 
 /****************************************************************************************
-*                           DÉFINTION DU PRGORAMME PRINCIPALE                           *
+*                           Dï¿½FINTION DU PRGORAMME PRINCIPALE                           *
 ****************************************************************************************/
 int main(void)
 {
@@ -41,9 +41,9 @@ int main(void)
 	printf("Un %18s va de %12li a %10li et est de %i octet\n", "long int", LONG_MIN, LONG_MAX, sizeof(long int));
 	printf("Un %18s va de %12u a %10lu et est de %i octet\n", "unsigned long int", 0, ULONG_MAX, sizeof(unsigned long int));
 
-	system("pause");	  /*Ajoute une pause à la fenetre console */
+	system("pause");	  /*Ajoute une pause ï¿½ la fenetre console */
 
-	/* *** Taille des types réel *** */
+	/* *** Taille des types rï¿½el *** */
 	printf("\n\nUn %11s va de %12e a %10e et est de %i octet\n", "float", FLT_MIN, FLT_MAX, sizeof(float));
 	printf("Un %11s va de %12e a %10e et est de %i octet\n", "double", DBL_MIN, DBL_MAX, sizeof(double));
 	printf("Un %11s va de %12e a %10e et est de %i octet\n\n", "long double", LDBL_MIN, LDBL_MAX, sizeof(long double));

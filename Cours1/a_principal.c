@@ -20,19 +20,19 @@
 #include    <stdlib.h>
 
 /****************************************************************************************
-*                               D�FINTION DES CONSTANTES                                *
+*                               DÉFINTION DES CONSTANTES                                *
 ****************************************************************************************/
 
 
 
 /****************************************************************************************
-*                           D�FINTION DU PRGORAMME PRINCIPALE                           *
+*                           DÉFINTION DU PRGORAMME PRINCIPALE                           *
 ****************************************************************************************/
 int main(void)
 {
 
 	printf("Mon Hello World !!!\n");
 	system("pause");
-
+	printf("Mon Hello World 2!!!\n");
 	return EXIT_SUCCESS;
 }
