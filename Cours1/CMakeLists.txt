@@ -4,11 +4,12 @@
 #
 
 #
-add_executable(Cours1 a_principal.c)
+#add_executable(Cours1 a_principal.c)
 
 #
 #add_executable(Cours1 b_taille_des_types.c)
 
 
+add_executable(Cours1 d_calcul_salaire.c)
 
 

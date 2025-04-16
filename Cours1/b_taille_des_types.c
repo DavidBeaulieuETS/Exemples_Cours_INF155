@@ -23,11 +23,11 @@
 
 
 /****************************************************************************************
-*                               D�FINTION DES CONSTANTES                                *
+*                               DÉFINTION DES CONSTANTES                                *
 ****************************************************************************************/
 
 /****************************************************************************************
-*                           D�FINTION DU PRGORAMME PRINCIPALE                           *
+*                           DÉFINTION DU PROGRAMME PRINCIPALE                           *
 ****************************************************************************************/
 int main(void)
 {
@@ -41,12 +41,12 @@ int main(void)
 	printf("Un %18s va de %12li a %10li et est de %i octet\n", "long int", LONG_MIN, LONG_MAX, sizeof(long int));
 	printf("Un %18s va de %12u a %10lu et est de %i octet\n", "unsigned long int", 0, ULONG_MAX, sizeof(unsigned long int));
 
-	system("pause");	  /*Ajoute une pause � la fenetre console */
+	system("pause");	  /*Ajoute une pause à la fenetre console */
 
-	/* *** Taille des types r�el *** */
+	/* *** Taille des types réel *** */
 	printf("\n\nUn %11s va de %12e a %10e et est de %i octet\n", "float", FLT_MIN, FLT_MAX, sizeof(float));
 	printf("Un %11s va de %12e a %10e et est de %i octet\n", "double", DBL_MIN, DBL_MAX, sizeof(double));
 	printf("Un %11s va de %12e a %10e et est de %i octet\n\n", "long double", LDBL_MIN, LDBL_MAX, sizeof(long double));
 
-	return EXIT_SUCCESS;  /*Permet de terminer le programme proprement*/
+	return EXIT_SUCCESS;  /* Permet de terminer le programme proprement */
 }

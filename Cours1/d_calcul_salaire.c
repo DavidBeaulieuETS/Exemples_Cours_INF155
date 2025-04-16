@@ -6,36 +6,36 @@
 	Description: Programme qui calcul un salaire brut
 
 	NOTE DE L'ENSEIGNANT : Les commentaires de ce module sont des explications, ils ne
-						   représentent pas vraiment ce qui est attendu de vous lors
+						   reprÃ©sentent pas vraiment ce qui est attendu de vous lors
 						   de la remise de vos travaux pratiques.
 
 *****************************************************************************************/
 
 /****************************************************************************************
-*                               COMMANDE DU PRÉPROCESSEUR                               *
+*                               COMMANDE DU PRÃ‰PROCESSEUR                               *
 ****************************************************************************************/
-#define _CRT_SECURE_NO_WARNINGS
+//#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
 
 /****************************************************************************************
-*                               DÉFINTION DES CONSTANTES                                *
+*                               DÃ‰FINTION DES CONSTANTES                                *
 ****************************************************************************************/
 
 /****************************************************************************************
-*                           DÉFINTION DU PRGORAMME PRINCIPALE                           *
+*                           DÃ‰FINTION DU PROGRAMME PRINCIPALE                           *
 ****************************************************************************************/
 int main(void)
 {
     //VARIABLES
 
-    //Sert à la saisie du  taux horaire
+    //Sert Ã  la saisie du  taux horaire
 	double taux;
 
-    //Sert a la saisie du nombre d'heures
+    //Sert Ã  la saisie du nombre d'heures
 	double nb_heures;
 
-	//sert à retenir le calcul du salaire
+	//sert Ã  retenir le calcul du salaire
 	double salaire;
       
 	//sollicitation du taux horaire

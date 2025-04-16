@@ -25,11 +25,11 @@
 
 
 /****************************************************************************************
-*                           DÉFINTION DU PRGORAMME PRINCIPALE                           *
+*                           DÉFINTION DU PROGRAMME PRINCIPALE                           *
 ****************************************************************************************/
 int main(void)
 {
-	// D�claration des variables
+	// Déclaration des variables
 	char caractere = 0;
 	int entier = 0;
 	double reel = 0;
@@ -43,20 +43,20 @@ int main(void)
 	scanf("%c",&caractere);
 	printf("\nLa valeur saisie : %c \n",caractere);
 
-	system("pause");	/* NDE : Ajoute une pause � la fenetre console */
+	system("pause");	/* NDE : Ajoute une pause à la fenetre console */
 
 	// Aquisisition d'un entier
 	printf("\nSaisisez un entier : ");
 	scanf("%i",&entier);
 	printf("\nLa valeur saisie : %i \n",entier);
 
-	system("pause");	/* NDE : Ajoute une pause � la fenetre console */
+	system("pause");	/* NDE : Ajoute une pause à la fenetre console */
 
 	// Aquisisition d'un double
 	printf("\nSaisisez un double : ");
 	scanf("%lf",&reel);
 	printf("\nLa valeur saisie : %f \n",reel);
 
-	system("pause");	  /* NDE : Ajoute une pause � la fenetre console */
+	system("pause");	  /* NDE : Ajoute une pause à la fenetre console */
 	return EXIT_SUCCESS;  /* NDE : Permet de terminer le programme proprement*/
 }

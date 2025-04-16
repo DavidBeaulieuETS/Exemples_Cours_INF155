@@ -23,16 +23,13 @@
 *                               DÉFINTION DES CONSTANTES                                *
 ****************************************************************************************/
 
-
-
 /****************************************************************************************
-*                           DÉFINTION DU PRGORAMME PRINCIPALE                           *
+*                           DÉFINTION DU PROGRAMME PRINCIPALE                           *
 ****************************************************************************************/
 int main(void)
 {
-
 	printf("Mon Hello World !!!\n");
 	system("pause");
-	printf("Mon Hello World 2!!!\n");
-	return EXIT_SUCCESS;
+
+	return EXIT_SUCCESS;		/* Permet de terminer le programme proprement */
 }
