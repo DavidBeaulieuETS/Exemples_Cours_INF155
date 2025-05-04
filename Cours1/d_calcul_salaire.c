@@ -14,16 +14,16 @@
 /****************************************************************************************
 *                               COMMANDE DU PRÉPROCESSEUR                               *
 ****************************************************************************************/
-//#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
 
 /****************************************************************************************
-*                               DÉFINTION DES CONSTANTES                                *
+*                               DEFINITION DES CONSTANTES                                *
 ****************************************************************************************/
 
 /****************************************************************************************
-*                           DÉFINTION DU PROGRAMME PRINCIPALE                           *
+*                           DEFINITION DU PROGRAMME PRINCIPALE                           *
 ****************************************************************************************/
 int main(void)
 {
@@ -42,8 +42,8 @@ int main(void)
 	printf("\n\nEntrez le taux horaire svp : ");
 	scanf("%lf", &taux);
 
-	//sollicitation du nombre d'heures travaillees
-	printf("\n\nEntrez le nombre d\'heures travaillees : ");
+	//sollicitation du nombre d'heures travaillées
+	printf("\n\nEntrez le nombre d\'heures travaillées : ");
 	scanf("%lf", &nb_heures);
 
 	//calculs du salaire

@@ -3,17 +3,17 @@
 	Date    : 9 janvier 2022
 	Fichier : attribution_des_cotes.c
 
-	Description: Programme qui permet l'attribution des cote selon un note entré au clavier
+	Description: Programme qui permet l'attribution des cote selon une note entrÃ©e au clavier
 
 	NOTE DE L'ENSEIGNANT : Les commentaires de ce module sont des explications, ils ne
-						   représentent pas vraiment ce qui est attendu de vous lors
+						   reprÃ©sentent pas vraiment ce qui est attendu de vous lors
 						   de la remise de vos travaux pratiques.
 
 *****************************************************************************************/
 
 
 /****************************************************************************************
-*                               COMMANDE DU PRÉPROCESSEUR                               *
+*                               COMMANDE DU PRÃ‰PROCESSEUR                               *
 ****************************************************************************************/
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdlib.h>		/* Librairie Standart */
@@ -21,12 +21,12 @@
 
 
 /****************************************************************************************
-*                               DÉFINTION DES CONSTANTES                                *
+*                               DÃ‰FINTION DES CONSTANTES                                *
 ****************************************************************************************/
 
 
 /****************************************************************************************
-*                           DÉFINTION DU PRGORAMME PRINCIPALE                           *
+*                           DÃ‰FINTION DU PRGORAMME PRINCIPALE                           *
 ****************************************************************************************/
 int main(void)
 {	
@@ -54,8 +54,8 @@ int main(void)
 	else if (notes == 100 )
 		printf("Parfait!!!\n");
 
-	/*On fini souvent cette expression par un else (valeur par défault)*/
+	/*On fini souvent cette expression par un else (valeur par dÃ©fault)*/
 
-	system("pause");	  /*Ajoute une pause à la fenetre console */
+	system("pause");	  /*Ajoute une pause Ã  la fenetre console */
 	return EXIT_SUCCESS;  /*Permet de terminer le programme proprement*/
 }
