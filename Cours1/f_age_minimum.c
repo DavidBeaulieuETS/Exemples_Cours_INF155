@@ -6,45 +6,45 @@
     Description: Validation de l'age minimum. Exemple d'un if-else. 
 
     NOTE DE L'ENSEIGNANT : Les commentaires de ce module sont des explications, ils ne
-                           représentent pas vraiment ce qui est attendu de vous lors
+                           reprÃ©sentent pas vraiment ce qui est attendu de vous lors
                            de la remise de vos travaux pratiques.
 
 *****************************************************************************************/
 
 /****************************************************************************************
-*                               COMMANDE DU PRÉPROCESSEUR                               *
+*                               COMMANDE DU PRï¿½PROCESSEUR                               *
 ****************************************************************************************/
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdlib.h>
 #include <stdio.h> 
 
 /****************************************************************************************
-*                               DÉFINTION DES CONSTANTES                                *
+*                               DÃ‰FINITION DES CONSTANTES                                *
 ****************************************************************************************/
 #define AGE_MAJEUR 18
 
 /****************************************************************************************
-*                           DÉFINTION DU PRGORAMME PRINCIPALE                           *
+*                           DÃ‰FINITION DU PROGRAMME PRINCIPALE                           *
 ****************************************************************************************/
 int main(void)
 {
 
     int age_courant;
 
-	// Affichage à l'écran de la question.
+	// Affichage Ã  l'Ã©cran de la question.
     printf("Entrez votre age : ");
     
 	// Attente de l'aquisition au clavier.
 	scanf("%i", & age_courant);
     
-	// Validation de l'age entré
+	// Validation de l'age entrÃ©
 	if (age_courant >= AGE_MAJEUR)
 	{
-		// Afichage du résultat si la comparaison est vrais.
+		// Afichage du rÃ©sultat si la comparaison est vrais.
 		printf("\n Voulez-vous une biere ?? \n\n");
 	}
     else
-    {	// Afichage du résultat si la comparaison est fausse. 
+    {	// Afichage du rÃ©sultat si la comparaison est fausse.
 		printf("\n Vous n'avez pas le droit d'acheter de l'alcool !!! \n\n");
     }
 

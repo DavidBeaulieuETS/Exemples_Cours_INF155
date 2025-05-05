@@ -43,7 +43,7 @@ int main(void)
 	scanf("%lf", &taux);
 
 	//sollicitation du nombre d'heures travaillées
-	printf("\n\nEntrez le nombre d\'heures travaillées : ");
+	printf("\n\nEntrez le nombre d\'heures travaillees : ");
 	scanf("%lf", &nb_heures);
 
 	//calculs du salaire
