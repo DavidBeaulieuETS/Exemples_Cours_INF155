@@ -29,7 +29,7 @@ int main(void)
 {
     int valeur = 10;            // Variable qui sera utilisée pour évaluer des conditions
     int resultat = 0;           // Variable qui contiendra le résultat d'une expression
-                                // booleenne.
+                                // Booleenne.
     int nb_piece;               // Variables utilisé lors d'un exemple.
     int objet; 
 
