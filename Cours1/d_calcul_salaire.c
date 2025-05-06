@@ -36,7 +36,7 @@ int main(void)
 	double nb_heures;
 
 	//sert à retenir le calcul du salaire
-	double salaire;
+	double  salaire;
       
 	//sollicitation du taux horaire
 	printf("\n\nEntrez le taux horaire svp : ");
@@ -50,7 +50,10 @@ int main(void)
 	salaire = taux * nb_heures;
  
     //affichage du salaire
-	printf("\n\nVotre salaire de brut est : %0.2lf \n\n", salaire);
+	//printf("\n\nVotre salaire de brut est : %0.2lf \n\n", salaire);
+
+	printf("\n\nPour un salaire de %lf avec un nombre d'heure de %lf \nLe salaire brut est de %0.2lf \n\n", taux, nb_heures, salaire);
+
 
 	return EXIT_SUCCESS;
 }

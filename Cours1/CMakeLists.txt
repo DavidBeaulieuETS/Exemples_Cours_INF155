@@ -11,7 +11,7 @@
 
 #add_executable(Cours1 d_calcul_salaire.c)
 
-add_executable(Cours1 d_structures_conditionnelles.c)
+#add_executable(Cours1 d_structures_conditionnelles.c)
 
 #add_executable(Cours1 e_type_et_io.c)
 
@@ -19,6 +19,6 @@ add_executable(Cours1 d_structures_conditionnelles.c)
 
 #add_executable(Cours1 g_calcul_salaire_if.c)
 
-#add_executable(Cours1 h_attribution_des_cotes.c)
+add_executable(Cours1 h_attribution_des_cotes.c)
 
 

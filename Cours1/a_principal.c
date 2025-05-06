@@ -28,8 +28,12 @@
 ****************************************************************************************/
 int main(void)
 {
-	printf("Mon Hello World !!!\n");
+	printf("Hello World !!!\n");
+
 	system("pause");
+
+    printf("Bonjour le Monde !!!\n");
 
 	return EXIT_SUCCESS;		/* Permet de terminer le programme proprement */
 }
+
