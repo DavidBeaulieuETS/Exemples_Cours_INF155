@@ -19,6 +19,10 @@
 
 #add_executable(Cours1 g_calcul_salaire_if.c)
 
-add_executable(Cours1 h_attribution_des_cotes.c)
+#add_executable(Cours1 h_attribution_des_cotes.c)
+
+add_executable(Cours1 ExempleLaboratoire1.c)
+
+
 
 
