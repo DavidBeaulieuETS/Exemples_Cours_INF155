@@ -26,6 +26,8 @@ int main(void)
 	int entier = 0 ;
 	unsigned long int uLong = 0;
 
+    setbuf(stdout, 0);        // Permet d'afficher les printfs en mode débug avec Clion
+
 	printf("Exemple de conversion \n*************************\n\n");
 	
 	/**** Conversion intégral ****/

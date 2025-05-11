@@ -1,59 +1,56 @@
 /*****************************************************************************
 	Par        : David Beaulieu
-	Revise le  : 01/07/11
-	Fichier    : Pyramide d'�toile
-	Objectifs  : Expliquer comment faire un pseudo-code.
-	Note	   : 		
-*****************************************************************************/
+	Revisé le  : H 2025
+	Fichier    : pyramide.c
+	Objectifs  : Permet d'afficher dans la console une pyramide d'étoiles
+	Note	   :
 
-/* Inclure au projet les librairies */
-#include <stdlib.h>		/* Librairie Standart */
-#include <stdio.h>		/* Librairie Entrer - Sortie */
+	NOTE DE L'ENSEIGNANT : Les commentaires de ce module sont des explications, ils ne
+						   représentent pas vraiment ce qui est attendu de vous lors
+						   de la remise de vos travaux pratiques.
+*****************************************************************************************/
 
+/****************************************************************************************
+*                            AJOUT DES MODULES ET LIBRAIRIES                            *
+****************************************************************************************/
+#include <stdlib.h>		// Librairie Standard
+#include <stdio.h>		// Librairie Entrer - Sortie
 
-/****************************************************************************/
-/*							DEFINITIONS DES CONSTANTES						*/
-/****************************************************************************/
+/****************************************************************************************
+*                               DÉFINITION DES CONSTANTES                               *
+****************************************************************************************/
 
-/****************************************************************************/
-/*							PROGRAMME PRINCIPAL								*/
-/****************************************************************************/
+/****************************************************************************************
+*                           DÉFINITION DU PROGRAMME PRINCIPALE                          *
+****************************************************************************************/
 int main (void)
 {
+	int ligne = 0;		// Taille en ligne de la pyramide
+	int colonne = 0;	// Taille en colonne de la pyramide
+	int nbEtoile = 0;	// Taille de la base de la pyramide
+	setbuf(stdout, 0);        // Permet d'afficher les printfs en mode débug avec Clion
 
-	int ligne = 0;
-	int colonne = 0;
-	int nbEtoile = 0;
-
-	/*Acisition du nombre d'étoile au clavier*/
+	// Acisition du nombre d'étoile au clavier qui définit aussi la base de la pyramide
 	printf("Entrez un nombre d'etoile : ");
-	scanf("%i",&nb_etoile);
+	scanf("%i",&nbEtoile);
+	printf("\n");
 
-	/* le nombre d'étoile est égal au nombre de ligne */
-	ligne = nb_etoile;
-	
-	/* on itère chacune des lignes */
-	while (ligne > 0)
+	// On itère chacune des lignes jusqu'a la base d'étoiles voulue
+	for(ligne = 1 ; ligne <= nbEtoile; ++ligne)
 	{
-		/* le numéro de la ligne est �gal au nombre d'�toile */
-		colonne = ligne;
-		
-		/*On inscrit chacune des �toiles pour la ligne donn�e */
-		while (colonne > 0)
+		// Le numéro de la ligne est égal au nombre d'étoile à afficher
+        // On inscrit chacune des étoiles pour la ligne donnée
+		for (colonne = ligne; colonne > 0; --colonne)
 		{
 			printf("*");
-			colonne = colonne - 1;
 		}
 
-		/* Saut de ligne */
+		// Saut de ligne
 		printf("\n");
-		/* D�cr�mente le nombre de ligne */
-		ligne = ligne - 1;
 	}
 
 	printf("\n\n");
-	system("pause");	  /*Ajoute une pause � la fenetre console */
-	return EXIT_SUCCESS;  /*Permet de terminer le programme proprement*/
+	return EXIT_SUCCESS;  		        // Permet de terminer le programme proprement
 }
 
 

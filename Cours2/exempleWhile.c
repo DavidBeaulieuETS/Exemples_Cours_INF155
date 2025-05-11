@@ -30,12 +30,14 @@ int main(void)
 	long int nombre;
 	int somme;
 	int chiffre;
-		
-	/* Initialisation des variables */
-	nombre = NOMBRE;
-	somme = 0; 					// Contient la somme des chiffre, Essayez de ne pas initialiser cette variable !!
 
-    // Répète les instruction tant que la valuur de nombre est plus grande de 0
+    setbuf(stdout, 0);        // Permet d'afficher les printfs en mode débug avec Clion
+
+	// Initialisation des variables
+	nombre = NOMBRE;
+	somme = 0; 						// Contient la somme des chiffre, Essayez de ne pas initialiser cette variable !!
+
+    // Répète les instruction tant que la valeur de nombre est plus grande de 0
 	while (nombre > 0)
 	{
 		chiffre = nombre % 10;		// Prend l'unité du nombre

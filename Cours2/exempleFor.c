@@ -1,62 +1,55 @@
 /*****************************************************************************
 	Par        : David Beaulieu
-	Revise le  : 
-	Fichier    : Exemple_3.c
-	Objectifs  : Montrer la boucle for
-	Note	   : 		
-*****************************************************************************/
+	Revise le  : E 2025
+	Fichier    : exempleFor.c
+	Objectifs  : Montrer l'utilisation de la boucle for
+	Note	   :
 
+	NOTE DE L'ENSEIGNANT : Les commentaires de ce module sont des explications, ils ne
+						   représentent pas vraiment ce qui est attendu de vous lors
+						   de la remise de vos travaux pratiques.
+*****************************************************************************************/
 
-/* Inclure au projet les librairies */
-#include <stdlib.h>		/* Librairie Standart */
-#include <stdio.h>		/* Librairie Entrer - Sortie */
+/****************************************************************************************
+*                            AJOUT DES MODULES ET LIBRAIRIES                            *
+****************************************************************************************/
+#include <stdlib.h>		// Librairie Standard
+#include <stdio.h>		// Librairie Entrer - Sortie
 
-
-/****************************************************************************/
-/*							DEFINITIONS DES CONSTANTES						*/
-/****************************************************************************/
-
+/****************************************************************************************
+*                               DÉFINITION DES CONSTANTES                               *
+****************************************************************************************/
 #define BORNE_MIN 3
 #define BORNE_MAX 100
 
-
-
-/****************************************************************************/
-/*							PROGRAMME PRINCIPAL								*/
-/****************************************************************************/
+/****************************************************************************************
+*                           DÉFINITION DU PROGRAMME PRINCIPALE                          *
+****************************************************************************************/
 int main(void)
 {
-	int i;
-	int somme;
+	int nombre;		// Itérateur des nombres de l'intervalle
+	int somme;		// Contient la somme des chiffres pair du nombre
 		
-	somme = 0; /* Essayez de ne pas initialiser cette variable !! */
+	somme = 0;		// Essayez de ne pas initialiser cette variable !!
 
-	/* On fait la somme des eniters de l'interval */
-	/* Essayez de faire la m�me chose avec un for ?? */
-	for(i = BORNE_MIN; i<=BORNE_MAX; i++ )
+	setbuf(stdout, 0);        // Permet d'afficher les printfs en mode débug avec Clion
+
+	// On fait la somme des entiers de l'intervalle
+	// La boucle for permet de d'itérer les nombre de BORNE_MIN à BORNE_MAX
+	for(nombre = BORNE_MIN; nombre<=BORNE_MAX; nombre++ )
 	{
-		if( i%2 == 0 )
+		// Le modulo 2 du nombre permet d'identifier si le nombre est pair ou impair
+		// Le résultat du module de 2 du nombre est égale a 1 quand le nombre est impair et
+		// égale à 1 quand le nombre est pair
+		if( nombre % 2 == 0 )
 		{
-			somme = somme + i;
+			somme = somme + nombre;		// Fait la somme des nombre pair uniquement
 		}
 	}
-	printf ("la somme des entiers pair de l'interval %i a %i est %i\n\n",BORNE_MIN,BORNE_MAX,somme);
+	printf ("La somme des entiers pair de l'intervalle %i a %i est %i\n\n",BORNE_MIN,BORNE_MAX,somme);
 
-	/* On peut faire la m�me chose avec un While */
+	// Peut-on faire la même chose avec une boucle while ??
 
-	somme = 0;
-	while (i < BORNE_MAX)
-	{
-		if(i%2 == 0)
-		{
-			somme = somme + i;
-		}
-	
-	i++;
-	}
- 
-
-
-	system("pause");	  /*Ajoute une pause � la fenetre console */
-	return EXIT_SUCCESS;  /*Permet de terminer le programme proprement*/
+	system("pause");	  		        // Ajoute une pause à la fenêtre console
+	return EXIT_SUCCESS;  						// Permet de terminer le programme proprement
 }

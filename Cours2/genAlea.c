@@ -1,65 +1,79 @@
 /*****************************************************************************
 	Par        : David Beaulieu
-	Revise le  : A12
-	Fichier    : gen_alea.c
-	Objectifs  : Donner un exemple de l'utilisation des fonction de pseudo-al�atoire
-	Note	   : 		
-*****************************************************************************/
+	Revise le  : H 2025
+	Fichier    : genAlea.c
+	Objectifs  : Donner un exemple de l'utilisation des fonctions de pseudo-aléatoire		
+    Note	   :
 
-#include <stdlib.h>		/* NDE : module Standart */
-#include <stdio.h>		/* NDE : module Entrer - Sortie */
-#include <time.h>
+    NOTE DE L'ENSEIGNANT : Les commentaires de ce module sont des explications, ils ne
+                           représentent pas vraiment ce qui est attendu de vous lors
+                           de la remise de vos travaux pratiques.
+*****************************************************************************************/
 
-#define NB_NOMBRE 20
-#define MIN 1
-#define MAX 1000
+/****************************************************************************************
+*                            AJOUT DES MODULES ET LIBRAIRIES                            *
+****************************************************************************************/
+#include <stdlib.h>		// Librairie Standard
+#include <stdio.h>		// Librairie Entrer - Sortie
+#include <time.h>       // Libairie de gestion du temps 
+/****************************************************************************************
+*                               DÉFINITION DES CONSTANTES                               *
+****************************************************************************************/
+#define NB_NOMBRE 10         // Quantité de nombre aléatoire à afficher
+#define MIN 1                // Valeur minimum des nombres aléatoires à afficher
+#define MAX 1000             // Valeur maximum des nombres aléatoires à afficher
 
-/****************************************************************************/
-/*							PROGRAMME PRINCIPAL								*/
-/****************************************************************************/
+/****************************************************************************************
+*                           DÉFINITION DU PROGRAMME PRINCIPALE                          *
+****************************************************************************************/
 int main(void)
 {
-	int i, nombre_entier;
-	double nombre_reel;
+    // Déclaration des variables
+    int i, nombreEntier;
+	double nombreReel;
+    setbuf(stdout, 0);        // Permet d'afficher les printfs en mode débug avec Clion
 
-	/* Essayer de mettre la ligne suivante dans une des boucles */
+    // Initialise le générateur pseudo-aléatoire avec le temps courant de l'horloge
+	srand(time(NULL));
+    rand();
+	printf("Valeur de time : %lld \n\n",time(NULL));    // affiche la valeur du temps courant, inutile pour l'initialisation
 
-	srand(time(NULL));	/* Initialise le générateur pseudo-al�atoire avec le temps courant de l'horloge */
-	printf("Valeur de time : %u \n\n",time(NULL));
 
-	//srand(1234);		/* Initialise le g�n�rateur pseudo-al�atoire avec un eniter */
+    // Initialise le générateur pseudo-aléatoire avec un eniter, ceci n'est pas toujours conseillé
+	// srand(1234);
 
+    // Permet de connaitre la valeur maximum générer par rand
 	printf("Valeur du RAND_MAX %i\n\n",RAND_MAX);
 
-	/* Affiche la s�rie de nombre pseudo-al�atoire de la fonction rand()*/
+	// Affiche la série de nombre pseudo-aléatoire de la fonction rand()
 	printf("FONCTION RAND()\n");
 	for(i=0; i < NB_NOMBRE; ++i)
 	{
 		printf("%i\n" ,rand());
 	}
 
-	system("pause");
+	system("pause");                    // Ajoute une pause à la fenêtre console
 
-	/* Affiche la s�rie de nombre entier pseudo-al�atoire de la fonction rand() born� par un calcul*/
+	// Affiche la série de nombre entier pseudo-aléatoire de la fonction rand() borné par un calcul
 	printf("\n\nNOMBRE ENTIER AVEC BORNE\n");
 	for(i=0; i < NB_NOMBRE; ++i)
 	{
-		nombre_entier = (MIN + (int)(rand() / (RAND_MAX + 0.005) * (MAX - MIN + 1)));
+		nombreEntier = (MIN + (int)(rand() / (RAND_MAX + 0.005) * (MAX - MIN + 1)));
 
-		printf("%i\n" ,nombre_entier);
+		printf("%i\n" ,nombreEntier);
 	}
 
-	system("pause");
+	system("pause");                    // Ajoute une pause à la fenêtre console
 
-	/* Affiche la s�rie de nombre reel pseudo-al�atoire de la fonction rand() born� par un calcul*/
+	// Affiche la série de nombre reel pseudo-aléatoire de la fonction rand() borné par un calcul
 	printf("\n\nNOMBRE REEL AVEC BORNE\n");
 	for(i=0; i < NB_NOMBRE; ++i)
 	{
-		nombre_reel = ((double)MIN + ((double)rand() / ((double)RAND_MAX + 0.005) * ((double)MAX - (double)MIN + 1.0)));
+		nombreReel = ((double)MIN + ((double)rand() / ((double)RAND_MAX + 0.005) * ((double)MAX - (double)MIN + 1.0)));
 
-		printf("%.3lf\n" ,nombre_reel);
+		printf("%.3lf\n" ,nombreReel);
 	}
 
-	system("pause");	  
+	system("pause");                    // Ajoute une pause à la fenêtre console
 	return EXIT_SUCCESS; 
 }
