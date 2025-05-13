@@ -23,10 +23,20 @@ int main(void)
 {
 	char caract = 0;
 	unsigned char uCaract = 100;
-	int entier = 0 ;
+	int entier = 20 ;
 	unsigned long int uLong = 0;
+    double reel = 23.45;
+    double resultat = 34.66;
 
     setbuf(stdout, 0);        // Permet d'afficher les printfs en mode débug avec Clion
+
+
+     entier = reel + resultat ;
+
+
+
+
+
 
 	printf("Exemple de conversion \n*************************\n\n");
 	

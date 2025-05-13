@@ -30,12 +30,13 @@ int main(void)
 	long int nombre;
 	int somme;
 	int chiffre;
+    int nbChiffre = 0;
 
     setbuf(stdout, 0);        // Permet d'afficher les printfs en mode débug avec Clion
 
 	// Initialisation des variables
 	nombre = NOMBRE;
-	somme = 0; 						// Contient la somme des chiffre, Essayez de ne pas initialiser cette variable !!
+							// Contient la somme des chiffre, Essayez de ne pas initialiser cette variable !!
 
     // Répète les instruction tant que la valeur de nombre est plus grande de 0
 	while (nombre > 0)
@@ -44,7 +45,12 @@ int main(void)
 
 		somme = somme + chiffre;	// Fait la somme
 
-		nombre = nombre / 10;		// Réduit le nombre de son unit� */
+		nombre = nombre / 10;		// Réduit le nombre de son unité */
+
+
+        nbChiffre++;
+
+
 	}
 
 	printf ("\nLa somme des chiffres du nombre : %i est : %i\n\n",NOMBRE,somme);

@@ -34,13 +34,13 @@ int main(void)
     setbuf(stdout, 0);        // Permet d'afficher les printfs en mode débug avec Clion
 
     // Initialise le générateur pseudo-aléatoire avec le temps courant de l'horloge
-	srand(time(NULL));
+	//srand(time(NULL));
     rand();
 	printf("Valeur de time : %lld \n\n",time(NULL));    // affiche la valeur du temps courant, inutile pour l'initialisation
 
 
     // Initialise le générateur pseudo-aléatoire avec un eniter, ceci n'est pas toujours conseillé
-	// srand(1234);
+	srand(1234);
 
     // Permet de connaitre la valeur maximum générer par rand
 	printf("Valeur du RAND_MAX %i\n\n",RAND_MAX);

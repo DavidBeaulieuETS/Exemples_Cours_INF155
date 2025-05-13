@@ -31,7 +31,9 @@ int main(void)
 
     // Calcul de l'hypothénuse
 	tempo = pow(base,2) + pow(hauteur,2);
-	hyp = sqrt(tempo); 
+	hyp = sqrt(tempo);
+
+	hyp = sqrt(pow(base,2) + pow(hauteur,2));
 
 	printf("la valeur de l'hypothenuse = %.3lf\n\n",hyp);
 

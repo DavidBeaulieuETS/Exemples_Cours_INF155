@@ -2,7 +2,7 @@
 # Date : 2025
 # Utiliser pour contrôler les fichiers main du cours 2 à exécuter dans le projet
 #
-add_executable(Cours2 utilisationFonction.c)
+#add_executable(Cours2 utilisationFonction.c)
 
 #add_executable(Cours2 exemplePermissions.c)
 

@@ -33,7 +33,7 @@ int main(void)
     scanf("%u",&valeur);
 
     //Parcours les bits de l'entier
-    for(i= nbBits-1 ; i>=0; --i){
+    for(i = nbBits-1 ; i>=0; --i){
         printf("%i", (valeur >> i) & 1);        // Fait un décalage à droite pour mettre le bit à afficher
     }                                           // complètement à droite et effectue un masque avec la valeur 1
                                                 // pour retirer la partie de gauche du nombre
