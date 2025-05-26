@@ -8,5 +8,8 @@ set(CMAKE_C_STANDARD 11)
 # Exemple pour le Cours 2
 #add_subdirectory(Cours2)
 
-# Exemple pour le Cours 2
-add_subdirectory(Cours3)
+# Exemple pour le Cours 3
+#add_subdirectory(Cours3)
+
+# Exemple pour le Cours 4
+add_subdirectory(Cours4)

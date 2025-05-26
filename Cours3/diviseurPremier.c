@@ -55,7 +55,7 @@ int main(void)
 	int inferieur = 0;
 	int superieur = 0;
 
-
+	setbuf(stdout, 0);        // Permet d'afficher les printfs en mode débug avec Clion
 	// Appel de fonction avec une constante comme paramètre
 	// On teste la fonction est premier
 	if(estPremier(TEST) == VRAI)

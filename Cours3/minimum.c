@@ -40,6 +40,8 @@ int main(void)
 	int variableB = 0;			// L'autre valeur à comparer
 	int resultat = 0;			// Résultat de la fonction
 
+	setbuf(stdout, 0);        // Permet d'afficher les printfs en mode débug avec Clion
+
 	// Acquisition des valeurs
 	printf("Entrez une premiere valeur : ");
 	scanf("%i",&variableA);
@@ -50,6 +52,8 @@ int main(void)
 
 	// Appel de la fonction minimum
 	resultat = minimum(variableA,variableB);
+
+	resultat = minimum(23,78);
 
 	printf ("\nLa valeur minimum entrez est : %i\n\n",resultat);
 	
