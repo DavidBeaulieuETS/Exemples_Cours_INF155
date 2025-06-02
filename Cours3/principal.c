@@ -5,7 +5,7 @@
 	Objectifs  : Ce module sert contexte au module jeuxHasard.c
 	Note	   : Inclure jeuxHasard.h et jeuxHasard.c dans votre projet
 
-NOTE DE L'ENSEIGNANT : Les commentaires de ce module sont des explications, ils ne
+	NOTE DE L'ENSEIGNANT : Les commentaires de ce module sont des explications, ils ne
 						   représentent pas vraiment ce qui est attendu de vous lors
 						   de la remise de vos travaux pratiques.
 

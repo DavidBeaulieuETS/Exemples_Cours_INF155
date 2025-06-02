@@ -13,7 +13,8 @@
 #add_executable(Cours4 manipulationTableau.c)
 #add_executable(Cours4 adresseTableau.c)
 #add_executable(Cours4 tableauAvecBoucle.c)
-add_executable(Cours4 tableauFonction.c)
+#add_executable(Cours4 tableauFonction.c)
+#add_executable(Cours4 exempleUnitaire.c)
 
 
 
