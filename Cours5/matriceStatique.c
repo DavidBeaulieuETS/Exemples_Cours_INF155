@@ -101,6 +101,7 @@ int entierAlea (int min, int max);
 int main(void)
 {
     srand(time(NULL));	                // Initialisation du générateur aléatoire
+    setbuf(stdout, 0);        // Permet d'afficher les printfs en mode débug avec Clion
 
     // Déclaration d'un tableau statique
     int uneMatrice[NB_LIGNE][NB_COLONNE];

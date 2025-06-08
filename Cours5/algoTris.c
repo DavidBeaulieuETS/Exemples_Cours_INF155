@@ -23,7 +23,7 @@
 // 1 - tri par sélection
 // 2 - tri par insertion
 // 3 - tri bulle
-#define TRI_UTILISER 1
+#define TRI_UTILISER 3
 
 // Permet d'afficher toute les itérations d'un tri
 // 0 = Aucun affichage
@@ -129,6 +129,7 @@ int entierAlea (int min, int max);
 int main(void) {
 
     srand(time(NULL));	                // Initialisation du générateur aléatoire
+    setbuf(stdout, 0);        // Permet d'afficher les printfs en mode débug avec Clion
 
     int tableauTest[NB_ELEMENT];        // Tableau qui servira de test au tri
 

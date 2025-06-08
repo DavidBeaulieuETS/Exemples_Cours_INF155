@@ -111,6 +111,7 @@ int entierAlea (int min, int max);
 int main(void) {
 
 	srand(time(NULL));	                		// Initialisation du générateur aléatoire
+	setbuf(stdout, 0);        // Permet d'afficher les printfs en mode débug avec Clion
 
 	int tableauTest[NB_ELEMENT];        		// Tableau qui servira de test au tri
 	long indiceRetour;							// Indice ou se trouve l'élément dans le tableau
@@ -148,9 +149,9 @@ int main(void) {
 }
 
 
-/****************************************************************************/
-/*							DEFINITION DES FONCTIONS						*/
-/****************************************************************************/
+/****************************************************************************************
+*                               DÉFINITION DES FONCTIONS                                *
+****************************************************************************************/
 
 /*
 	fouille Sequentielle

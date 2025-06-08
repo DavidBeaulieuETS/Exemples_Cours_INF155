@@ -23,7 +23,7 @@
 // Permet de sélectioner l'exemple à compiler dans le main
 // 1 = Le premier exemple avec la comparaison des matrices
 // 2 = Le deuxième exemple avec la sélection de valeur dans une matrice
-#define EXEMPLE_COMPILER 1
+#define EXEMPLE_COMPILER 2
 
 // Taille de matrice de démonstration
 #define NB_LIGNE      5
@@ -145,6 +145,7 @@ void selectionValeur(int matrice[][NB_COLONNE], int valeursSelection [], int nbL
 int main(void)
 {
     srand(time(NULL));	                // Initialisation du générateur aléatoire
+    setbuf(stdout, 0);        // Permet d'afficher les printfs en mode débug avec Clion
 
     // Exemple 1 - Comparaison de matrice
 #if (EXEMPLE_COMPILER == 1)
@@ -188,7 +189,7 @@ int main(void)
     initMatriceAlea(uneMatrice,NB_LIGNE,NB_COLONNE);
 
     // Sélectione les valeurs dans la matrice qui sont plus grand qu'un valeur spécifique
-    selectionValeur(uneMatrice,tableauValeurSelection,NB_LIGNE,NB_COLONNE,0,&nbValeurs);
+    selectionValeur(uneMatrice,tableauValeurSelection,NB_LIGNE,NB_COLONNE,-11,&nbValeurs);
 
     // Affiche la matrice et le tableau 1D
     afficherMatrice(uneMatrice,NB_LIGNE,NB_COLONNE);
@@ -358,6 +359,7 @@ int egaliteMatrice(int matriceA[][NB_COLONNE],int matriceB[][NB_COLONNE], int nb
             if (matriceA[i][j] != matriceB[i][j]){
               idem = 0;
             }
+
         }
     }
     return idem;
