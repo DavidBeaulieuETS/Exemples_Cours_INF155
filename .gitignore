@@ -1,6 +1,9 @@
 #Spécifique à l'utilisation de Google Drive
 *.ini
 
+#Spécifique au cours
+monTemplate.c
+
 #Spécifique pour CLion
 cmake-build-debug/
 .idea/
