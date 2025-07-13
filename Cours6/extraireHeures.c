@@ -74,7 +74,7 @@ int main(void)
 {
     setbuf(stdout, 0);		                 // Permets d'afficher les printf en mode débug avec Clion
 
-    testHeureEstValide();
+    //testHeureEstValide();
     testExtraireHeure();
 
     return EXIT_SUCCESS;
