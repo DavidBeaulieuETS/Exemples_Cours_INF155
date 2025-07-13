@@ -1,200 +1,384 @@
 /****************************************************************************************
     Auteur  : David Beaulieu
     Date    : 24 mai 2014
-    Fichier : 2_tab2d_dynamique.c
+    Fichier : matriceDynamique.c
 
-    Ce module contient un exemple afin de montrer comment d�clarer, coder et utiliser
+    Ce module contient un exemple afin de montrer comment déclarer, coder et utiliser
     les tableau 2D Dynamique
 
     NOTE DE L'ENSEIGNANT : Les commentaires de ce module sont des explications, ils ne
-                           repr�sentent pas vraiment ce qui est attendu de vous lors
+                           représentent pas vraiment ce qui est attendu de vous lors
                            de la remise de vos travaux pratiques.
 
-*****************************************************************************************/
-#define  _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
-#include <stdlib.h>
+/****************************************************************************************
+*                            AJOUT DES MODULES ET LIBRAIRIES                            *
+****************************************************************************************/
+#include <stdlib.h>		// Librairie Standard
+#include <stdio.h>		// Librairie Entrée - Sortie
+#include <windows.h>    // Librairie des commandes de windows
 
 /****************************************************************************************
-*                               D�FINTION DES CONSTANTES                                *
+*								DÉCLARATION DES FONCTIONS								*
 ****************************************************************************************/
-
-
-/****************************************************************************************
-*                               D�CLARATION DES FONCTIONS                               *
-****************************************************************************************/
-
-
 //
-//  Prototype de fonction
-//  On utilise le type ** pour repr�senter un tableau 2D dynamique
+//  Note sur les prototypes de fonction
+//  On utilise le type ** pour représenter un tableau 2D dynamique
+//  On remarque que par rapport au tableau 2D statique l'entête de fonction n'a pas besoin
+//  de la valeur de la taille en colonne
+
+/*
+    L'exemple suivant propose 2 stratégies d'initialisation dynamique de matrice
+    S1 : Un tableau de int * de taille ligne, qui pointe vers des tableaux de int indépendant de taille colonne.
+    S2 : Un grand tableau de int de taille ligne * colonne avec un tableau de int * de taille ligne qui pointe à
+            chaque case de début de ligne dans le grand tableau de int.
+*/
 
 
-// Allocation de la m�moire du tableau selon la stat�gie 1 
-// Cette strat�gie donnera un tableau 2D discontinue en m�moire
-int** creer_matrice_S1(int nb_ligne, int nb_colonne);
+/*
+    NOM	        : creerMatriceS1
+    DESCRIPTION : Alloue dynamiquement une matrice d'entiers à deux dimensions,
+                  de `nbLigne` lignes et `nbColonne` colonnes. Libère la mémoire en cas d'échec.
+    PARAMETRES  :
+        - nbLigne   : nombre de lignes à allouer.
+        - nbColonne : nombre de colonnes par ligne.
+    RETOUR      :
+        - Un pointeur vers la matrice allouée (int**).
+        - NULL si une allocation échoue.
+*/
+int ** creerMatriceS1(int nbLigne, int nbColonne);
 
-// Allocation de la m�moire du tableau selon la stat�gie 2 
-// Cette strat�gie donnera un tableau 2D continue en m�moire
-int** creer_matrice_S2(int nb_ligne, int nb_colonne);
+/*
+    NOM	        : libererMatriceS1
+    DESCRIPTION : Libère toute la mémoire allouée pour une matrice d'entiers
+                  créée avec la fonction creerMatriceS1, puis met le pointeur à NULL.
+    PARAMETRES  :
+        - matrice  : adresse du pointeur vers la matrice à libérer (int***).
+        - nbLigne  : nombre de lignes allouées dans la matrice.
+    RETOUR      : Aucun (void).
+*/
+void libererMatriceS1(int*** matrice, int nbLigne);
 
-// Initialisation des valeurs d'un tableau 2D dynamique avec un valeur unique.
-int** init_matrice_valeur(int** matrice, int nb_ligne, int nb_colonne, int valeur);
+/*
+    NOM         : creerMatriceS2
+    DEF         : Alloue dynamiquement une matrice d'entiers de dimensions nbLigne x nbColonne
+                  en utilisant une allocation contiguë pour les données (vecteur) et un tableau
+                  de pointeurs vers le début de chaque ligne.
+    PARAMETRES  :
+        - nbLigne   : nombre de lignes de la matrice à créer
+        - nbColonne : nombre de colonnes de la matrice à créer
+    RETOUR      :
+        - pointeur vers un tableau de pointeurs (int**) représentant la matrice
+        - NULL si l'allocation mémoire échoue
+*/
+int** creerMatriceS2(int nbLigne, int nbColonne);
 
-// Initialisation des valeurs d'un tableau 2D dynamique avec un valeur incr�mental (compteur).
-int** init_matrice_indice(int** matrice, int nb_ligne, int nb_colonne);
+/*
+    NOM         : libererMatriceS2
+    DEF         : Libère la mémoire allouée pour une matrice créée par creerMatriceS2
+    PARAMETRES  :
+        - matrice : pointeur vers le tableau de pointeurs représentant la matrice
+    RETOUR      : aucun
+*/
+void libererMatriceS2(int** matrice);
 
-// Affiche les valeurs d'un tableau 2D dynamique
-void afficher_matrice(int** matrice, int nb_ligne, int nb_colonne);
+/*
+    NOM         : initMatriceIndice
+    DEF         : Initialise une matrice 2D dynamique avec des valeurs incrémentales
+                  à partir de 1, en parcourant la matrice ligne par ligne.
+    PARAMETRES  :
+        - matrice  : pointeur vers le tableau de pointeurs représentant la matrice
+        - nbLigne  : nombre de lignes de la matrice
+        - nbColonne: nombre de colonnes de la matrice
+    RETOUR         :  Aucun
+*/
+void initMatriceIndice(int** matrice, int nbLigne, int nbColonne);
 
-// Affiche les adresses des cases d'un tableau 2D dynamique
-void afficher_adresse_matrice(int** matrice, int nb_ligne, int nb_colonne);
+/*
+    NOM         : afficherMatrice
+    DEF         : Affiche à la console les valeurs contenues dans une matrice 2D dynamique
+                  formatées en tableau, avec des tabulations entre les éléments.
+    PARAMETRES  :
+        - matrice  : pointeur vers le tableau de pointeurs représentant la matrice
+        - nbLigne  : nombre de lignes de la matrice
+        - nbColonne: nombre de colonnes de la matrice
+    RETOUR      : aucun
+*/
+void afficherMatrice(int** matrice, int nbLigne, int nbColonne);
+
+/*
+    NOM         : afficherAdresseMatrice
+    DEF         : Affiche à la console les adresses mémoire des cases de la matrice 2D dynamique
+                  afin de visualiser leur organisation en mémoire.
+    PARAMETRES  :
+        - matrice  : pointeur vers le tableau de pointeurs représentant la matrice
+        - nbLigne  : nombre de lignes de la matrice
+        - nbColonne: nombre de colonnes de la matrice
+    RETOUR      : aucun
+    SPÉCIFICATION :
+*/
+void afficherAdresseMatrice(int** matrice, int nbLigne, int nbColonne);
+
 
 
 /****************************************************************************************
-*                           D�FINTION DU PRGORAMME PRINCIPALE                           *
+*                           DÉFINITION DU PROGRAMME PRINCIPALE                          *
 ****************************************************************************************/
 int main(void)
 {
-    // D�claration des pointeurs ** 
-    // Ne tableau n'existe pas en m�moire � ce point !!
-    int** une_matrice = NULL;
-    int** une_autre_matrice = NULL;
+    SetConsoleOutputCP(CP_UTF8);        // Définit l'encodage de sortie de la console à UTF-8
+    setbuf(stdout, 0);		            // Permets d'afficher les printf en mode débug avec Clion
 
-    // On cr�er un premier tableau 2d selon la strat�gie 1 - discontinue
-    une_matrice = creer_matrice_S1(5, 4);
+    // Déclaration des pointeurs **
+    // La matrice n'existe pas en mémoire à ce point !!
+    int** uneMatrice = NULL;
+    int** uneAutreMatrice = NULL;
 
-    // On cr�er un autre tableau 2d selon la strat�gie 2 - continue
-    une_autre_matrice = creer_matrice_S2(3, 6);
+    // On créer une première matrice selon la stratégie 1 - discontinue
+    uneMatrice = creerMatriceS1(5, 4);
+
+    // On créer une autre matrice selon la stratégie 2 - contiguë
+    uneAutreMatrice = creerMatriceS2(3, 5);
   
      // On initialise les valeurs des deux tableau - attention au taille !
-     une_matrice = init_matrice_indice(une_matrice, 5, 4);
-     une_autre_matrice = init_matrice_valeur(une_autre_matrice, 3, 6, 777);
+     initMatriceIndice(uneMatrice, 5, 4);
+     initMatriceIndice(uneAutreMatrice, 3, 5);
 
-     // On affiche le premier tableau 2D discontinue
-     printf("\nUn premier tableau : \n");
-     afficher_matrice(une_matrice, 5, 4);
-     printf("\nle meme tableau avec les adresses discontinues : \n");
-     afficher_adresse_matrice(une_matrice, 5, 4);
 
-     // On affiche le deuxi�me tableau 2D continue
-     printf("\nUn deuxieme tableau : \n");
-     afficher_matrice(une_autre_matrice, 3, 6);
-     printf("\nle meme tableau avec les adresses continues : \n");
-     afficher_adresse_matrice(une_autre_matrice, 3, 6);
+     // On affiche les infos de la première matrice discontinue en adresse
+     printf("\n** Première matrice : \n");
+     afficherMatrice(uneMatrice, 5, 4);
+     printf("\n** Les adresses discontinues de la matrice :  \n");
+     afficherAdresseMatrice(uneMatrice, 5, 4);
+
+    // On affiche les infos de la deuxième matrice continue en adresse
+     printf("\n** Deuxième matrice : \n");
+     afficherMatrice(uneAutreMatrice, 3, 5);
+     printf("\n** Les adresses continue de la matrice : \n");
+     afficherAdresseMatrice(uneAutreMatrice, 3, 5);
 }
 
+/****************************************************************************************
+/									DÉFINITION DES FONCTIONS							*
+****************************************************************************************/
+/*
+    NOM	        : creerMatriceS1
+    DESCRIPTION : Alloue dynamiquement une matrice d'entiers à deux dimensions,
+                  de `nbLigne` lignes et `nbColonne` colonnes. Libère la mémoire en cas d'échec.
+    PARAMETRES  :
+        - nbLigne   : nombre de lignes à allouer.
+        - nbColonne : nombre de colonnes par ligne.
+    RETOUR      :
+        - Un pointeur vers la matrice allouée (int**).
+        - NULL si une allocation échoue.
+    SPÉCIFICATION :
+        - Utilise un tableau de pointeurs pour représenter les lignes.
+        - Chaque ligne est un tableau dynamique d'entiers.
+        - En cas d'échec pendant l’allocation des lignes, libère la mémoire déjà allouée.
+        - L’appelant est responsable de libérer la mémoire si la création réussit.
+*/
+int** creerMatriceS1(int nbLigne, int nbColonne) {
 
-// Allocation de la m�moire du tableau selon la stat�gie 1 
-// Cette strat�gie donnera un tableau 2D discontinue en m�moire
-int** creer_matrice_S1(int nb_ligne, int nb_colonne) {
+    int** matrice = NULL; // Pointeur vers la matrice (tableau de pointeurs)
 
-    int** matrice = NULL;
+    // Création du tableau de pointeurs vers chaque ligne
+    matrice = (int**)malloc(nbLigne * sizeof(int*));
 
-    // Cr�ation du tableau des lignes
-    matrice = (int**)malloc(nb_ligne * sizeof(int*));
-
+    // Vérifie si l'allocation des lignes a réussi
     if (matrice != NULL) {
 
-        // Cr�ation des tableau des colonnes
-        for (int i = 0; i < nb_ligne; i++) {
+        // Allocation de chaque ligne (tableau de colonnes)
+        for (int i = 0; i < nbLigne; i++) {
 
-            matrice[i] = (int*)malloc(nb_colonne * sizeof(int));
+            matrice[i] = (int*)malloc(nbColonne * sizeof(int));
 
+            // Si une allocation de ligne échoue, on libère les lignes précédemment allouées
             if (matrice[i] == NULL) {
-                return NULL;
+                for (int j = 0; j < i; j++) {
+                    free(matrice[j]); // Libère chaque ligne déjà allouée
+                }
+                free(matrice); // Libère le tableau principal de pointeurs
+                return NULL;   // Échec de malloc → on retourne NULL
             }
         }
 
-    }
-    else {
-        return NULL;
+    } else {
+        return NULL; // Échec de malloc pour le tableau de lignes
     }
 
-    return matrice;
+    return matrice; // Matrice allouée avec succès
 }
 
+/*
+    NOM	        : libererMatriceS1
+    DESCRIPTION : Libère toute la mémoire allouée pour une matrice d'entiers
+                  créée avec la fonction creerMatriceS1, puis met le pointeur à NULL.
+    PARAMETRES  :
+        - matrice  : adresse du pointeur vers la matrice à libérer (int***).
+        - nbLigne  : nombre de lignes allouées dans la matrice.
+    RETOUR      : Aucun (void).
+    SPÉCIFICATION :
+        - Parcourt chaque ligne et libère son tableau.
+        - Libère ensuite le tableau principal de pointeurs.
+        - Met le pointeur de matrice à NULL pour éviter les accès invalides.
+*/
+void libererMatriceS1(int*** matrice, int nbLigne) {
 
-// Allocation de la m�moire du tableau selon la stat�gie 2 
-// Cette strat�gie donnera un tableau 2D continue en m�moire
-int** creer_matrice_S2(int nb_ligne, int nb_colonne) {
+    if (matrice != NULL && *matrice != NULL) {
+
+        // Libération de chaque ligne allouée
+        for (int i = 0; i < nbLigne; i++) {
+            free((*matrice)[i]);
+        }
+
+        // Libération du tableau de pointeurs
+        free(*matrice);
+
+        // Mise à NULL du pointeur de la matrice
+        *matrice = NULL;
+    }
+}
+
+/*
+    NOM         : creerMatriceS2
+    DEF         : Alloue dynamiquement une matrice d'entiers de dimensions nbLigne x nbColonne
+                  en utilisant une allocation contiguë pour les données (vecteur) et un tableau
+                  de pointeurs vers le début de chaque ligne.
+    PARAMETRES  :
+        - nbLigne   : nombre de lignes de la matrice à créer
+        - nbColonne : nombre de colonnes de la matrice à créer
+    RETOUR      :
+        - pointeur vers un tableau de pointeurs (int**) représentant la matrice
+        - NULL si l'allocation mémoire échoue
+    SPÉCIFICATION :
+        - La fonction alloue un bloc mémoire unique pour toutes les données (optimisant la
+          gestion mémoire et la localisation des accès)
+        - Chaque élément matrice[i] pointe sur le début de la i-ème ligne dans ce bloc
+        - En cas d'échec de l'allocation du bloc de données, retourne NULL
+        - L'appelant est responsable de libérer la mémoire du vecteur et du tableau de pointeurs
+          (attention, la fonction ne gère pas la libération)
+*/
+int** creerMatriceS2(int nbLigne, int nbColonne) {
 
     int* vecteur = NULL;
     int** matrice;
 
-    matrice = (int**)malloc(nb_ligne * sizeof(int*));
+    matrice = (int**)malloc(nbLigne * sizeof(int*));  // allocation tableau de pointeurs pour chaque ligne
 
-    //On cr�er toute les case de la matrice de facon lin�aire.
-    vecteur = (int*)malloc(nb_ligne * nb_colonne * sizeof(int));
-
+    // On crée toutes les cases de la matrice de façon linéaire dans un seul bloc mémoire contigu
+    vecteur = (int*)malloc(nbLigne * nbColonne * sizeof(int));
 
     if (vecteur != NULL) {
 
-        //On assigne la case de chaque d�but de ligne dans le tableau de la matrice
-        for (int i = 0; i < nb_ligne; i++) {
-
-            matrice[i] = &vecteur[i * nb_colonne];
+        // On assigne à chaque pointeur de ligne l'adresse de son début dans le vecteur
+        for (int i = 0; i < nbLigne; i++) {
+            matrice[i] = &vecteur[i * nbColonne];
         }
     }
     else {
-
+        // Allocation du vecteur échouée, on retourne NULL
         return NULL;
     }
     return matrice;
 }
 
-// Initialisation des valeurs d'un tableau 2D dynamique avec un valeur unique.
-int** init_matrice_valeur(int** matrice, int nb_ligne, int nb_colonne, int valeur) {
-
-    for (int i = 0; i < nb_ligne; i++) {
-
-        for (int j = 0; j < nb_colonne; j++) {
-
-            matrice[i][j] = valeur;
-        }
-    }
-    return matrice;
-}
-
-// Initialisation des valeurs d'un tableau 2D dynamique avec un valeur incr�mental (compteur).
-int** init_matrice_indice(int** matrice, int nb_ligne, int nb_colonne) {
-
-    int indice = 1;
-
-    for (int i = 0; i < nb_ligne; i++) {
-
-        for (int j = 0; j < nb_colonne; j++) {
-
-            matrice[i][j] = indice;
-            indice++;
-        }
-    }
-    return matrice;
-}
-
-// Affiche les valeurs d'un tableau 2D dynamique
-void afficher_matrice(int** matrice, int nb_ligne, int nb_colonne) {
-
-    for (int ligne = 0; ligne < nb_ligne; ligne++) {
-
-        for (int colonne = 0; colonne < nb_colonne; colonne++) {
-
-            printf("%i\t", matrice[ligne][colonne]);
-
-        }
-        printf("\n");
+/*
+    NOM         : libererMatriceS2
+    DEF         : Libère la mémoire allouée pour une matrice créée par creerMatriceS2
+    PARAMETRES  :
+        - matrice : pointeur vers le tableau de pointeurs représentant la matrice
+    RETOUR      : aucun
+    SPÉCIFICATION :
+        - Libère d’abord le bloc de données linéaires pointé par matrice[0]
+        - Puis libère le tableau de pointeurs
+        - Ne fait rien si matrice est NULL
+*/
+void libererMatriceS2(int** matrice) {
+    if (matrice != NULL) {
+        free(matrice[0]);  // libération du vecteur contigu
+        free(matrice);     // libération du tableau de pointeurs
     }
 }
 
-// Affiche les adresses des cases d'un tableau 2D dynamique
-void afficher_adresse_matrice(int** matrice, int nb_ligne, int nb_colonne) {
+/*
+    NOM         : initMatriceIndice
+    DEF         : Initialise une matrice 2D dynamique avec des valeurs incrémentales
+                  à partir de 1, en parcourant la matrice ligne par ligne.
+    PARAMETRES  :
+        - matrice  : pointeur vers le tableau de pointeurs représentant la matrice
+        - nbLigne  : nombre de lignes de la matrice
+        - nbColonne: nombre de colonnes de la matrice
+    RETOUR      : Aucun
+    SPÉCIFICATION :
+        - Remplit la matrice avec des valeurs successives (1, 2, 3, ...)
+        - L'initialisation se fait en parcourant la matrice en ordre naturel (ligne-colonne)
+*/
+void initMatriceIndice(int** matrice, int nbLigne, int nbColonne) {
 
-    for (int ligne = 0; ligne < nb_ligne; ligne++) {
+    int indice = 1;  // Compteur initialisé à 1
 
-        for (int colonne = 0; colonne < nb_colonne; colonne++) {
+    // Parcours de chaque ligne
+    for (int i = 0; i < nbLigne; i++) {
 
+        // Parcours de chaque colonne dans la ligne courante
+        for (int j = 0; j < nbColonne; j++) {
+
+            matrice[i][j] = indice;  // Affecte la valeur courante à la case
+            indice++;                // Incrémente le compteur pour la prochaine case
+        }
+    }
+}
+
+/*
+    NOM         : afficherMatrice
+    DEF         : Affiche à la console les valeurs contenues dans une matrice 2D dynamique
+                  formatées en tableau, avec des tabulations entre les éléments.
+    PARAMETRES  :
+        - matrice  : pointeur vers le tableau de pointeurs représentant la matrice
+        - nbLigne  : nombre de lignes de la matrice
+        - nbColonne: nombre de colonnes de la matrice
+    RETOUR      : aucun
+    SPÉCIFICATION :
+        - Affiche les valeurs ligne par ligne, chaque valeur séparée par une tabulation
+        - Termine chaque ligne par un saut de ligne
+*/
+void afficherMatrice(int** matrice, int nbLigne, int nbColonne) {
+
+    // Parcours de chaque ligne
+    for (int ligne = 0; ligne < nbLigne; ligne++) {
+
+        // Parcours de chaque colonne dans la ligne courante
+        for (int colonne = 0; colonne < nbColonne; colonne++) {
+
+            printf("%i\t", matrice[ligne][colonne]);  // Affiche la valeur avec une tabulation
+        }
+        printf("\n");  // Retour à la ligne après chaque ligne affichée
+    }
+}
+
+/*
+    NOM         : afficherAdresseMatrice
+    DEF         : Affiche à la console les adresses mémoire des cases de la matrice 2D dynamique
+                  afin de visualiser leur organisation en mémoire.
+    PARAMETRES  :
+        - matrice  : pointeur vers le tableau de pointeurs représentant la matrice
+        - nbLigne  : nombre de lignes de la matrice
+        - nbColonne: nombre de colonnes de la matrice
+    RETOUR      : aucun
+    SPÉCIFICATION :
+        - Affiche les adresses des cases, séparées par des tabulations, ligne par ligne
+        - Utile pour comprendre la disposition mémoire, surtout avec l’allocation contiguë S2
+*/
+void afficherAdresseMatrice(int** matrice, int nbLigne, int nbColonne) {
+
+    // Parcours de chaque ligne
+    for (int ligne = 0; ligne < nbLigne; ligne++) {
+
+        // Parcours de chaque colonne dans la ligne courante
+        for (int colonne = 0; colonne < nbColonne; colonne++) {
+
+            // Affiche l'adresse mémoire de la case courante avec tabulation
             printf("%p\t", &matrice[ligne][colonne]);
         }
-        printf("\n");
+        printf("\n");  // Retour à la ligne après chaque ligne affichée
     }
 }
