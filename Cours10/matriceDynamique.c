@@ -155,6 +155,9 @@ int main(void)
      afficherMatrice(uneAutreMatrice, 3, 5);
      printf("\n** Les adresses continue de la matrice : \n");
      afficherAdresseMatrice(uneAutreMatrice, 3, 5);
+
+
+     libererMatriceS1(&uneMatrice,5);
 }
 
 /****************************************************************************************

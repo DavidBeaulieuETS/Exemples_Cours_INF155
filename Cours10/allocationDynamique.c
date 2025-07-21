@@ -93,6 +93,8 @@ void afficherInfoTableau(int * unTableau, int nbElement);
 ****************************************************************************************/
 int main(void)
 {
+    setbuf(stdout, 0);		            // Permets d'afficher les printf en mode débug avec Clion
+
     int * monTableau;
     int * autreTableau;
     int * uneCopieTableau;
@@ -112,10 +114,10 @@ int main(void)
     afficherInfoTableau(monTableau, taille);
 
     //Copie dans un autre tableau
-    uneCopieTableau = copierTableau(monTableau,taille);
+    //uneCopieTableau = copierTableau(monTableau,taille);
 
     //Exemple de shadow copie
-    //uneCopieTableau = monTableau;
+    uneCopieTableau = monTableau;
 
     printf("Copie du tableau 1:\n");
     afficherInfoTableau(uneCopieTableau, taille);

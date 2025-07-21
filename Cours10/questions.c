@@ -92,6 +92,8 @@ int main() {
     srand(time(NULL));	                // Initialisation du générateur aléatoire
 
     t_question * tableauQuestions[NB_QUESTIONS_MAX];
+
+
     int nombreDeQuestion = initialiserQuestions(tableauQuestions);
 
     for (int i = 0; i < nombreDeQuestion; ++i){
@@ -100,11 +102,11 @@ int main() {
         poserUneQuestion(tableauQuestions[i]);
     }
 
-    printf("votre score est de %i sur %i\n", calculerScore(tableauQuestions,nombreDeQuestion) , nombreDeQuestion);
+    printf("\n **** votre score est de %i sur %i\n", calculerScore(tableauQuestions,nombreDeQuestion) , nombreDeQuestion);
 
 
     //Test ajouter question
-    //ajouterQuestion(tableauQuestions, &nombreDeQuestion);
+    ajouterQuestion(tableauQuestions, &nombreDeQuestion);
 
     //Test retirer la questions 2
     //retirerQuestionParIndice(tableauQuestions, &nombreDeQuestion, 2);
@@ -113,7 +115,7 @@ int main() {
     //melangerQuestions(tableauQuestions, nombreDeQuestion);
 
 
-    afficherQuestions(tableauQuestions, nombreDeQuestion);
+    //afficherQuestions(tableauQuestions, nombreDeQuestion);
 
     return EXIT_SUCCESS;
 }
@@ -142,7 +144,7 @@ void ajouterQuestion(t_question* tableau[], int* nbActuelles) {
         printf("Limite de questions atteinte (%d).\n", NB_QUESTIONS_MAX);
     }
 
-    t_question* nouvelle = malloc(sizeof(t_question));
+    t_question* nouvelle = (t_question*)malloc(sizeof(t_question));
     if (nouvelle == NULL) {
         printf("Erreur d’allocation mémoire.\n");
     }

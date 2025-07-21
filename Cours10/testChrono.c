@@ -52,15 +52,21 @@ int main() {
     setbuf(stdout, 0);		            // Permets d'afficher les printf en mode débug avec Clion
     srand((unsigned)time(NULL));        // Initialisation du générateur aléatoire
 
-    int taille = 1000000;        // Taille du tableau (modulable)                 **Pour référence :
+    int taille = 100000;        // Taille du tableau (modulable)                 **Pour référence :
     int maxValeur = 100000;      // Valeur max aléatoire                            Début du tri à bulles sur 1000000 éléments...
-    int * tableau;               // Tableau à tirer                                 Tri terminé.
+    int * tableau;               // Tableau à tirer
+                                //                            Tri terminé.
                                                                                 //  Temps écoulé : 2187.832000 secondes
     // Création et remplissage aléatoire du tableau
     tableau = initTableauAleatoire(taille, maxValeur);
 
+
+
     // Création et initialisation du chrono
     t_chrono chrono = initChrono();
+
+
+
 
     if (tableau == NULL || chrono == NULL){
         printf("** Erreur d'allocation !! \n");

@@ -20,6 +20,8 @@
 
 #include <time.h>  // pour clock_t si besoin en externe
 
+
+
 /* TYPE ABSTRAIT : t_chrono
    L'utilisateur ne manipule que le handle. Il ne doit ni le modifier ni l'explorer. */
 typedef struct struct_chrono * t_chrono;
