@@ -114,7 +114,6 @@ void trierGarageAnnee(t_garage* garage){
         // Hypothèse : la plus petite année est à la position i
         anneeMin = garage->tableauMoto[i].annee;
         posAnneeMin = i;
-
         // Cherche une année plus petite dans la suite du tableau
         for(j = i; j < garage->nbMoto; ++j){
 
@@ -123,7 +122,6 @@ void trierGarageAnnee(t_garage* garage){
                 posAnneeMin = j;
             }
         }
-
         // Échange les deux motos si nécessaire
         motoTempo = garage->tableauMoto[posAnneeMin];
         garage->tableauMoto[posAnneeMin] = garage->tableauMoto[i];
@@ -200,7 +198,6 @@ void remplirGarage(t_garage* garage) {
         {"Moto Guzzi", "V85 TT", 2023, 853, TOUT_TERRAIN},
         {"Kawasaki", "ZRX1200R", 2004, 1164, ROUTE}
     };
-
     for (int i = 0; i < garage->nbMoto; i++) {
         garage->tableauMoto[i] = motos[i];
     }

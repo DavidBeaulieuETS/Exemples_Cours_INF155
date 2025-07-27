@@ -24,11 +24,10 @@ int main(void)
     SetConsoleOutputCP(CP_UTF8);        // Définit l'encodage de sortie de la console à UTF-8
     setbuf(stdout, 0);		            // Permets d'afficher les printf en mode débug avec Clion
 
-
     // Exemple de déclaration auto
     printf("Exemple de déclaration auto\n");
     exempleLocal();
-    //printf("Affiche la variable z après la fonction %lf\n",z);
+    printf("Affiche la variable z après la fonction %lf\n",z);
 
     // Exemple de déclaration register
     printf("\nExemple de déclaration register\n");
